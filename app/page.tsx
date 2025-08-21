@@ -1,6 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -24,8 +26,6 @@ import {
   Settings,
 } from "lucide-react"
 import { translations } from "@/lib/translations"
-import Link from "next/link"
-import Image from "next/image"
 
 export default function HomePage() {
   const [language, setLanguage] = useState<"fr" | "en">("fr")
@@ -36,13 +36,10 @@ export default function HomePage() {
   const [supportHours, setSupportHours] = useState(0)
 
   const t = translations[language]
-
   const words = ["Construire", "Innover", "Réussir Ensemble"]
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWordIndex((prev) => (prev + 1) % words.length)
-    }, 2000)
+    const interval = setInterval(() => setCurrentWordIndex((prev) => (prev + 1) % words.length), 2000)
     return () => clearInterval(interval)
   }, [])
 
@@ -55,9 +52,7 @@ export default function HomePage() {
         if (start >= target) {
           setter(target)
           clearInterval(timer)
-        } else {
-          setter(Math.floor(start))
-        }
+        } else setter(Math.floor(start))
       }, 16)
     }
 
@@ -75,6 +70,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <Header language={language} onLanguageChange={setLanguage} translations={t} />
 
+      {/* Hero Section */}
       <section className="relative pt-32 pb-24 px-4 overflow-hidden bg-gradient-to-br from-[#1940BF] via-[#1940BF]/90 to-[#1940BF]/80">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1940BF]/20 via-transparent to-[#1940BF]/30"></div>
         <div className="absolute top-10 left-10 opacity-10">
@@ -148,161 +144,97 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Statistics Section */}
       <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center animate-count-up">
+        <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {[
+            { value: clientsCount, label: "Clients Satisfaits" },
+            { value: experienceCount, label: "Années d'Expérience" },
+            { value: projectsCount, label: "Projets Réalisés" },
+            { value: supportHours, label: "Support Client" },
+          ].map((stat, idx) => (
+            <div key={idx} className="animate-count-up">
               <div className="text-4xl md:text-5xl font-bold text-[#1940BF] mb-2 animate-number-roll">
-                {clientsCount}+
+                {stat.value}
+                {idx === 3 ? "/7" : "+"}
               </div>
-              <div className="text-gray-600 font-medium">
-                {language === "fr" ? "Clients Satisfaits" : "Satisfied Clients"}
-              </div>
+              <div className="text-gray-600 font-medium">{stat.label}</div>
             </div>
-            <div className="text-center animate-count-up-delay-1">
-              <div className="text-4xl md:text-5xl font-bold text-[#1940BF] mb-2 animate-number-roll">
-                {experienceCount}+
-              </div>
-              <div className="text-gray-600 font-medium">
-                {language === "fr" ? "Années d'Expérience" : "Years of Experience"}
-              </div>
-            </div>
-            <div className="text-center animate-count-up-delay-2">
-              <div className="text-4xl md:text-5xl font-bold text-[#1940BF] mb-2 animate-number-roll">
-                {projectsCount}+
-              </div>
-              <div className="text-gray-600 font-medium">
-                {language === "fr" ? "Projets Réalisés" : "Projects Completed"}
-              </div>
-            </div>
-            <div className="text-center animate-count-up-delay-3">
-              <div className="text-4xl md:text-5xl font-bold text-[#1940BF] mb-2 animate-number-roll">
-                {supportHours}/7
-              </div>
-              <div className="text-gray-600 font-medium">{language === "fr" ? "Support Client" : "Client Support"}</div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
+      {/* Services Section */}
       <section className="py-24 px-4 bg-white">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-[#1940BF]">Nos Services</h2>
-            <p className="text-2xl text-gray-600 mb-4 max-w-3xl mx-auto">Solutions complètes pour votre réussite</p>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-[#1940BF]">Nos Services Informatique</h2>
+            <p className="text-2xl text-gray-600 mb-4 max-w-3xl mx-auto">
+              Nous offrons une gamme complète de services informatiques pour accompagner votre transformation digitale avec expertise et professionnalisme.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-[#1940BF]/20 hover:border-[#1940BF] bg-white transform hover:scale-105 animate-slide-in-bottom">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-[#1940BF]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#1940BF]/20 transition-all duration-300 group-hover:rotate-6">
-                  <Shield className="h-8 w-8 text-[#1940BF]" />
-                </div>
-                <CardTitle className="text-xl text-[#1940BF]">Assurance Qualité</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed text-gray-600">
-                  Tests complets et validation de la qualité de vos applications logicielles.
-                </CardDescription>
-                <div className="mt-4">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/QASenior-vo89xNwLUU8D0OTrtqWTAv2pgwp72T.webp"
-                    alt="QA Senior Expert"
-                    width={300}
-                    height={200}
-                    className="rounded-lg w-full object-cover"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-[#1940BF]/20 hover:border-[#1940BF] bg-white transform hover:scale-105 animate-slide-in-bottom-delay-1">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-[#1940BF]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#1940BF]/20 transition-all duration-300 group-hover:rotate-6">
-                  <Settings className="h-8 w-8 text-[#1940BF]" />
-                </div>
-                <CardTitle className="text-xl text-[#1940BF]">Développement</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed text-gray-600">
-                  Solutions sur mesure adaptées à vos besoins spécifiques.
-                </CardDescription>
-                <div className="mt-4">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/expertDev-XMJxD1nHpS7ZKMdMribIYwUlEyPvpo.png"
-                    alt="Expert Developer"
-                    width={300}
-                    height={200}
-                    className="rounded-lg w-full object-cover"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-[#1940BF]/20 hover:border-[#1940BF] bg-white transform hover:scale-105 animate-slide-in-bottom-delay-2">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-[#1940BF]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#1940BF]/20 transition-all duration-300 group-hover:rotate-6">
-                  <Globe className="h-8 w-8 text-[#1940BF]" />
-                </div>
-                <CardTitle className="text-xl text-[#1940BF]">Solutions Web</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed text-gray-600">
-                  Applications web modernes et performantes pour votre entreprise.
-                </CardDescription>
-                <div className="mt-4">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DesignWeb-lfbgP8c1alSdG7PE54bB5opu80opfM.webp"
-                    alt="Web Design Expert"
-                    width={300}
-                    height={200}
-                    className="rounded-lg w-full object-cover"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-[#1940BF]/20 hover:border-[#1940BF] bg-white transform hover:scale-105 animate-slide-in-bottom-delay-3">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-[#1940BF]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#1940BF]/20 transition-all duration-300 group-hover:rotate-6">
-                  <FileCheck className="h-8 w-8 text-[#1940BF]" />
-                </div>
-                <CardTitle className="text-xl text-[#1940BF]">Audit & Conseil</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed text-gray-600">
-                  Évaluation complète et recommandations d'amélioration.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-[#1940BF]/20 hover:border-[#1940BF] bg-white transform hover:scale-105 animate-slide-in-bottom-delay-4">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-[#1940BF]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#1940BF]/20 transition-all duration-300 group-hover:rotate-6">
-                  <Building className="h-8 w-8 text-[#1940BF]" />
-                </div>
-                <CardTitle className="text-xl text-[#1940BF]">Infrastructure</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed text-gray-600">
-                  Architecture robuste et scalable pour vos projets.
-                </CardDescription>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-[#1940BF]/20 hover:border-[#1940BF] bg-white transform hover:scale-105 animate-slide-in-bottom-delay-5">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-[#1940BF]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#1940BF]/20 transition-all duration-300 group-hover:rotate-6">
-                  <Briefcase className="h-8 w-8 text-[#1940BF]" />
-                </div>
-                <CardTitle className="text-xl text-[#1940BF]">Formation</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed text-gray-600">
-                  Formations spécialisées pour optimiser vos processus.
-                </CardDescription>
-              </CardContent>
-            </Card>
+            {[
+              {
+                title: "Assurance Qualité (QA)",
+                description: "Tests complets et validation rigoureuse de vos applications pour garantir une qualité optimale.",
+                icon: Shield,
+                image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/QASenior-vo89xNwLUU8D0OTrtqWTAv2pgwp72T.webp",
+              },
+              {
+                title: "Création de Sites Web",
+                description: "Conception et développement de sites web modernes, responsifs et optimisés pour le SEO.",
+                icon: Globe,
+                image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DesignWeb-lfbgP8c1alSdG7PE54bB5opu80opfM.webp",
+              },
+              {
+                title: "Applications Mobiles",
+                description: "Développement d'applications mobiles natives et cross-platform pour iOS et Android.",
+                icon: Zap,
+                image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/expertDev-XMJxD1nHpS7ZKMdMribIYwUlEyPvpo.png",
+              },
+              {
+                title: "Développement Logiciel",
+                description: "Solutions logicielles sur mesure adaptées à vos besoins spécifiques d'entreprise.",
+                icon: Settings,
+              },
+              {
+                title: "Audit & Optimisation",
+                description: "Évaluation complète et recommandations d'amélioration.",
+                icon: FileCheck,
+              },
+              {
+                title: "Infrastructure & Cloud",
+                description: "Architecture robuste et scalable pour vos projets et solutions cloud.",
+                icon: Building,
+              },
+              {
+                title: "Formation",
+                description: "Formations spécialisées pour optimiser vos processus.",
+                icon: Briefcase,
+              },
+            ].map((service, idx) => (
+              <Card
+                key={idx}
+                className="group hover:shadow-2xl transition-all duration-500 border-[#1940BF]/20 hover:border-[#1940BF] bg-white transform hover:scale-105 animate-slide-in-bottom"
+              >
+                <CardHeader className="pb-4">
+                  <div className="w-16 h-16 bg-[#1940BF]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#1940BF]/20 transition-all duration-300 group-hover:rotate-6">
+                    <service.icon className="h-8 w-8 text-[#1940BF]" />
+                  </div>
+                  <CardTitle className="text-xl text-[#1940BF]">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base leading-relaxed text-gray-600">{service.description}</CardDescription>
+                  {service.image && (
+                    <div className="mt-4">
+                      <Image src={service.image} alt={service.title} width={300} height={200} className="rounded-lg w-full object-cover" />
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
           <div className="text-center mt-12 animate-fade-in-up">
@@ -319,11 +251,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* About Section */}
       <section className="py-24 px-4 bg-white">
         <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-[#1940BF]">{t.about.title}</h2>
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto">{t.about.subtitle}</p>
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-[#1940BF]">À Propos de SafiCert</h2>
+            <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
+              Chez SafiCert, nous nous engageons à garantir la qualité, la performance, et la sécurité de vos produits numériques grâce à une expertise éprouvée en Assurance Qualité Logicielle (QA). En complément, nous proposons des solutions de développement d’applications et de création de sites web modernes pour répondre à vos besoins numériques les plus exigeants.
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
@@ -339,147 +274,22 @@ export default function HomePage() {
             <div className="animate-fade-in-right">
               <h3 className="text-3xl font-bold text-[#1940BF] mb-6">Nos Valeurs</h3>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Chez SafiCert, nous croyons en l'excellence, l'innovation et la collaboration. Notre équipe d'experts
-                travaille en étroite collaboration avec nos clients pour garantir des résultats exceptionnels.
+                Chez SafiCert, nous croyons en l'excellence, l'innovation et la collaboration. Notre équipe d'experts travaille en étroite collaboration avec nos clients pour garantir des résultats exceptionnels.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Nous nous engageons à fournir des solutions de qualité supérieure qui dépassent les attentes et
-                contribuent au succès de nos partenaires.
+                Nous nous engageons à fournir des solutions de qualité supérieure qui dépassent les attentes et contribuent au succès de nos partenaires.
               </p>
             </div>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-[#1940BF]/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1940BF]/20 transition-colors">
-                <Star className="h-10 w-10 text-[#1940BF]" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-[#1940BF]">{t.about.experience.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{t.about.experience.description}</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-[#1940BF]/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1940BF]/20 transition-colors">
-                <Globe className="h-10 w-10 text-[#1940BF]" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-[#1940BF]">{t.about.global.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{t.about.global.description}</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-[#1940BF]/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1940BF]/20 transition-colors">
-                <Zap className="h-10 w-10 text-[#1940BF]" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-[#1940BF]">{t.about.innovation.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{t.about.innovation.description}</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-[#1940BF]/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1940BF]/20 transition-colors">
-                <HeadphonesIcon className="h-10 w-10 text-[#1940BF]" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-[#1940BF]">{t.about.support.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{t.about.support.description}</p>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section className="py-24 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-[#1940BF]">
-              {language === "fr" ? "Témoignages Clients" : "Client Testimonials"}
-            </h2>
-            <p className="text-2xl text-gray-600">
-              {language === "fr" ? "Ce que disent nos clients" : "What our clients say"}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-white border-[#1940BF]/10 hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {language === "fr"
-                    ? "SafiCert a transformé notre processus de développement. Leur expertise et leur professionnalisme sont remarquables."
-                    : "SafiCert transformed our development process. Their expertise and professionalism are remarkable."}
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-[#1940BF]/10 rounded-full flex items-center justify-center mr-4">
-                    <Users className="h-6 w-6 text-[#1940BF]" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-[#1940BF]">Marie Dubois</div>
-                    <div className="text-sm text-gray-600">CTO, TechCorp</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white border-[#1940BF]/10 hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {language === "fr"
-                    ? "Une équipe exceptionnelle qui comprend nos besoins et livre des solutions de qualité supérieure."
-                    : "An exceptional team that understands our needs and delivers superior quality solutions."}
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-[#1940BF]/10 rounded-full flex items-center justify-center mr-4">
-                    <Users className="h-6 w-6 text-[#1940BF]" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-[#1940BF]">John Smith</div>
-                    <div className="text-sm text-gray-600">CEO, InnovateLab</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white border-[#1940BF]/10 hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {language === "fr"
-                    ? "Grâce à SafiCert, nous avons pu moderniser notre infrastructure et améliorer nos performances."
-                    : "Thanks to SafiCert, we were able to modernize our infrastructure and improve our performance."}
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-[#1940BF]/10 rounded-full flex items-center justify-center mr-4">
-                    <Users className="h-6 w-6 text-[#1940BF]" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-[#1940BF]">Sarah Johnson</div>
-                    <div className="text-sm text-gray-600">Director, GlobalTech</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
+      {/* Contact Section */}
       <section className="py-24 px-4 bg-white">
         <div className="container mx-auto text-center max-w-4xl">
           <h2 className="text-5xl md:text-6xl font-bold mb-8 text-[#1940BF] animate-fade-in-up">Contactez-nous</h2>
           <p className="text-2xl text-gray-600 mb-6 max-w-3xl mx-auto animate-fade-in-up-delay">
-            Prêt à transformer vos projets ?
-          </p>
-          <p className="text-xl text-gray-500 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up-delay-2">
-            Notre équipe d'experts est là pour vous accompagner dans tous vos défis technologiques.
+            Besoin d'un service personnalisé ? Contactez-nous pour discuter de vos besoins spécifiques et obtenir un devis gratuit.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">

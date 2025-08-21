@@ -12,13 +12,11 @@ export function SafiCertLogo({ className = "", size = "md" }: SafiCertLogoProps)
 
   return (
     <div className={`flex items-center space-x-3 ${className}`}>
-      <div className={`${sizeClasses[size]} relative`}>
-        <div className="absolute inset-0 bg-primary rounded-full flex items-center justify-center">
-          <div className="w-6 h-6 border-2 border-white rounded-full flex items-center justify-center">
-            <div className="w-2 h-2 bg-white rounded-full"></div>
-          </div>
-        </div>
-      </div>
+      <img
+        src="/images/saficertlogo.png"
+        alt="SafiCert Logo"
+        className={`${sizeClasses[size]} object-contain`}
+      />
       <span className="text-2xl font-bold text-foreground font-serif">SafiCert</span>
     </div>
   )

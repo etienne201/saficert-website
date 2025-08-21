@@ -3,15 +3,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* =========================
+   Variables CSS (Light/Dark)
+   ========================= */
 :root {
-  /* Updated to match original Saficert blue color scheme */
   --background: oklch(1 0 0);
   --foreground: oklch(0.15 0 0);
   --card: oklch(0.98 0 0);
   --card-foreground: oklch(0.15 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0 0);
-  --primary: oklch(0.35 0.25 265); /* Saficert blue */
+  --primary: oklch(0.35 0.25 265);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.9 0.02 265);
   --secondary-foreground: oklch(0.15 0 0);
@@ -24,11 +26,6 @@
   --border: oklch(0.9 0.02 265);
   --input: oklch(0.98 0.01 265);
   --ring: oklch(0.35 0.25 265 / 0.3);
-  --chart-1: oklch(0.35 0.25 265);
-  --chart-2: oklch(0.4 0.2 265);
-  --chart-3: oklch(0.45 0.2 220);
-  --chart-4: oklch(0.5 0.15 280);
-  --chart-5: oklch(0.55 0.1 300);
   --radius: 0.75rem;
   --sidebar: oklch(0.98 0.01 265);
   --sidebar-foreground: oklch(0.15 0 0);
@@ -41,7 +38,6 @@
 }
 
 .dark {
-  /* Updated dark mode to maintain blue theme with proper contrast */
   --background: oklch(0.05 0.02 265);
   --foreground: oklch(0.95 0.01 265);
   --card: oklch(0.08 0.02 265);
@@ -61,11 +57,6 @@
   --border: oklch(0.15 0.02 265);
   --input: oklch(0.12 0.02 265);
   --ring: oklch(0.55 0.25 265 / 0.4);
-  --chart-1: oklch(0.55 0.25 265);
-  --chart-2: oklch(0.6 0.2 265);
-  --chart-3: oklch(0.65 0.2 220);
-  --chart-4: oklch(0.7 0.15 280);
-  --chart-5: oklch(0.75 0.1 300);
   --sidebar: oklch(0.08 0.02 265);
   --sidebar-foreground: oklch(0.95 0.01 265);
   --sidebar-primary: oklch(0.55 0.25 265);
@@ -76,6 +67,9 @@
   --sidebar-ring: oklch(0.55 0.25 265 / 0.4);
 }
 
+/* =========================
+   Inline theme variables
+   ========================= */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -96,11 +90,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -117,460 +106,66 @@
   --font-serif: var(--font-playfair);
 }
 
+/* =========================
+   Base styles
+   ========================= */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground font-sans;
-    /* Added subtle gradient background */
     background: linear-gradient(135deg, oklch(1 0 0) 0%, oklch(0.98 0.01 265) 50%, oklch(0.96 0.02 265) 100%);
   }
+
   .dark body {
     background: linear-gradient(135deg, oklch(0.05 0.02 265) 0%, oklch(0.08 0.02 265) 50%, oklch(0.1 0.03 265) 100%);
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+
+  h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-bold;
   }
 }
 
-/* Added custom animations and utilities */
+/* =========================
+   Utility classes / Animations
+   ========================= */
 @layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out;
-  }
+  .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+  .animate-fade-in-up { animation: fadeInUp 0.8s ease-out; }
+  .animate-slide-in-left { animation: slideInLeft 0.8s ease-out; }
+  .animate-slide-in-right { animation: slideInRight 0.8s ease-out; }
+  .animate-bounce-in { animation: bounceIn 1s ease-out; }
+  .animate-scale-in { animation: scaleIn 0.6s ease-out; }
+  .animate-rotate-in { animation: rotateIn 0.8s ease-out; }
+  .animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+  .animate-pulse-slow { animation: pulseSlow 3s ease-in-out infinite; }
+  .animate-float { animation: float 3s ease-in-out infinite; }
+  .animate-typewriter { animation: typewriter 2s steps(20) infinite; }
+  .glass-effect { backdrop-filter: blur(10px); background: oklch(1 0 0 / 0.8); }
+  .dark .glass-effect { background: oklch(0.05 0.02 265 / 0.8); }
+  .saficert-gradient { background: linear-gradient(135deg, #1940bf 0%, #2050cf 50%, #1940bf 100%); }
+  .shadow-3xl { box-shadow: 0 35px 60px -12px rgba(0,0,0,0.25), 0 0 0 1px rgba(25,64,191,0.05); }
 
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out;
-  }
-
-  .animate-fade-in-up-delay {
-    animation: fadeInUp 0.8s ease-out 0.2s both;
-  }
-
-  .animate-fade-in-up-delay-2 {
-    animation: fadeInUp 0.8s ease-out 0.4s both;
-  }
-
-  .animate-slide-in-left {
-    animation: slideInLeft 0.8s ease-out;
-  }
-
-  .animate-slide-in-right {
-    animation: slideInRight 0.8s ease-out;
-  }
-
-  .animate-bounce-in {
-    animation: bounceIn 1s ease-out;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.6s ease-out;
-  }
-
-  .animate-rotate-in {
-    animation: rotateIn 0.8s ease-out;
-  }
-
-  .animate-pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulseSlow 3s ease-in-out infinite;
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .animate-float-delay-1 {
-    animation: float 3s ease-in-out infinite 0.5s;
-  }
-
-  .animate-float-delay-2 {
-    animation: float 3s ease-in-out infinite 1s;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.8s ease-out;
-  }
-
-  /* Added new advanced animations for SafiCert */
-  .animate-typewriter {
-    animation: typewriter 2s steps(20) infinite;
-  }
-
-  .animate-slide-in-bottom {
-    animation: slideInBottom 0.8s ease-out;
-  }
-
-  .animate-slide-in-bottom-delay-1 {
-    animation: slideInBottom 0.8s ease-out 0.1s both;
-  }
-
-  .animate-slide-in-bottom-delay-2 {
-    animation: slideInBottom 0.8s ease-out 0.2s both;
-  }
-
-  .animate-slide-in-bottom-delay-3 {
-    animation: slideInBottom 0.8s ease-out 0.3s both;
-  }
-
-  .animate-slide-in-bottom-delay-4 {
-    animation: slideInBottom 0.8s ease-out 0.4s both;
-  }
-
-  .animate-slide-in-bottom-delay-5 {
-    animation: slideInBottom 0.8s ease-out 0.5s both;
-  }
-
-  .animate-count-up {
-    animation: countUp 1.5s ease-out;
-  }
-
-  .animate-count-up-delay-1 {
-    animation: countUp 1.5s ease-out 0.2s both;
-  }
-
-  .animate-count-up-delay-2 {
-    animation: countUp 1.5s ease-out 0.4s both;
-  }
-
-  .animate-count-up-delay-3 {
-    animation: countUp 1.5s ease-out 0.6s both;
-  }
-
-  .animate-number-roll {
-    animation: numberRoll 2s ease-out;
-  }
-
-  .animation-delay-100 {
-    animation-delay: 100ms;
-  }
-
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
-
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
-
-  .animation-delay-500 {
-    animation-delay: 500ms;
-  }
-
-  .glass-effect {
-    backdrop-filter: blur(10px);
-    background: oklch(1 0 0 / 0.8);
-  }
-
-  .dark .glass-effect {
-    background: oklch(0.05 0.02 265 / 0.8);
-  }
-
-  .saficert-gradient {
-    background: linear-gradient(135deg, #1940bf 0%, #2050cf 50%, #1940bf 100%);
-  }
-
-  .saficert-hero-bg {
-    background: linear-gradient(
-      135deg,
-      oklch(1 0 0) 0%,
-      oklch(0.98 0.01 265) 25%,
-      oklch(0.96 0.02 265) 50%,
-      oklch(0.98 0.01 265) 75%,
-      oklch(1 0 0) 100%
-    );
-  }
-
-  .dark .saficert-hero-bg {
-    background: linear-gradient(
-      135deg,
-      oklch(0.05 0.02 265) 0%,
-      oklch(0.08 0.02 265) 25%,
-      oklch(0.1 0.03 265) 50%,
-      oklch(0.08 0.02 265) 75%,
-      oklch(0.05 0.02 265) 100%
-    );
-  }
-
-  /* Added bounce-slow animation for WhatsApp button */
-  .animate-bounce-slow {
-    animation: bounce-slow 2s ease-in-out infinite;
-  }
-
-  /* Enhanced shadow utilities for better depth */
-  .shadow-3xl {
-    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(25, 64, 191, 0.05);
-  }
-
-  .hover\:shadow-3xl:hover {
-    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(25, 64, 191, 0.05);
-  }
-
-  /* Added professional gradient backgrounds for SafiCert branding */
-  .saficert-contact-bg {
-    background: linear-gradient(
-      135deg,
-      oklch(0.05 0.02 265) 0%,
-      oklch(0.08 0.02 265) 25%,
-      oklch(0.1 0.03 265) 50%,
-      oklch(0.08 0.02 265) 75%,
-      oklch(0.05 0.02 265) 100%
-    );
-  }
-
-  /* Enhanced responsive design utilities */
+  /* Responsive */
   @media (max-width: 768px) {
-    .animate-typewriter {
-      font-size: 1.5rem;
-    }
-
-    .animate-slide-in-bottom {
-      animation-duration: 0.6s;
-    }
-  }
-
-  /* Added missing animation classes for fade-in-left, fade-in-right, spin-slow, and bounce-slow */
-  .animate-fade-in-left {
-    animation: fadeInLeft 0.8s ease-out;
-  }
-
-  .animate-fade-in-right {
-    animation: fadeInRight 0.8s ease-out;
-  }
-
-  .animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
-  }
-
-  .animate-bounce-slow {
-    animation: bounce-slow 2s ease-in-out infinite;
+    .animate-typewriter { font-size: 1.5rem; }
+    .animate-slide-in-bottom { animation-duration: 0.6s; }
   }
 }
 
-/* Added new keyframe animations for enhanced user experience */
-@keyframes typewriter {
-  0%,
-  50% {
-    opacity: 1;
-  }
-  51%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes slideInBottom {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes countUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes numberRoll {
-  0% {
-    transform: rotateX(90deg);
-    opacity: 0;
-  }
-  50% {
-    transform: rotateX(0deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: rotateX(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes pulseSlow {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes rotateIn {
-  from {
-    opacity: 0;
-    transform: rotate(-180deg) scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-}
-
-@keyframes pulseGlow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(25, 64, 191, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(25, 64, 191, 0.6);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes bounce-slow {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* =========================
+   Keyframes
+   ========================= */
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+@keyframes slideInLeft { from {opacity:0; transform:translateX(-50px);} to {opacity:1; transform:translateX(0);} }
+@keyframes slideInRight { from {opacity:0; transform:translateX(50px);} to {opacity:1; transform:translateX(0);} }
+@keyframes bounceIn { 0%{opacity:0;transform:scale(0.3);}50%{opacity:1;transform:scale(1.05);}70%{transform:scale(0.9);}100%{opacity:1;transform:scale(1);} }
+@keyframes scaleIn { from{opacity:0;transform:scale(0.8);} to{opacity:1;transform:scale(1);} }
+@keyframes rotateIn { from{opacity:0;transform:rotate(-180deg) scale(0.8);} to{opacity:1;transform:rotate(0deg) scale(1);} }
+@keyframes pulseGlow { 0%,100%{box-shadow:0 0 20px rgba(25,64,191,0.3);}50%{box-shadow:0 0 40px rgba(25,64,191,0.6);} }
+@keyframes pulseSlow { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.8;transform:scale(1.05);} }
+@keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+@keyframes typewriter {0%,50%{opacity:1;}51%,100%{opacity:0;}}

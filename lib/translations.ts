@@ -18,27 +18,36 @@ export const translations = {
       contact: "Contactez-nous",
     },
     services: {
-      title: "Nos Services d'Excellence",
-      subtitle: "Solutions complètes de certification et développement technologique",
-      quality: {
-        title: "Assurance Qualité Logicielle",
-        description: "Tests complets et validation de vos applications pour garantir la qualité et la performance.",
+      section: {
+        title: "Nos Services d'Excellence",
+        subtitle: "Solutions complètes de certification et développement technologique",
       },
-      development: {
-        title: "Développement d'Applications",
-        description: "Création d'applications sur mesure avec les dernières technologies et meilleures pratiques.",
-      },
-      web: {
-        title: "Création de Sites Web",
-        description: "Sites web modernes, responsifs et optimisés pour votre présence digitale.",
-      },
-      audit: {
-        title: "Audit & Optimisation des Systèmes",
-        description: "Analyse approfondie et optimisation de vos systèmes informatiques existants.",
-      },
-      infrastructure: {
-        title: "Solutions d'Infrastructure & Cloud",
-        description: "Architecture cloud moderne et solutions d'infrastructure évolutives.",
+      items: {
+        quality: {
+          title: "Assurance Qualité Logicielle",
+          description:
+            "Tests complets et validation de vos applications pour garantir la qualité et la performance.",
+        },
+        development: {
+          title: "Développement d'Applications",
+          description:
+            "Création d'applications sur mesure avec les dernières technologies et meilleures pratiques.",
+        },
+        web: {
+          title: "Création de Sites Web",
+          description:
+            "Sites web modernes, responsifs et optimisés pour votre présence digitale.",
+        },
+        audit: {
+          title: "Audit & Optimisation des Systèmes",
+          description:
+            "Analyse approfondie et optimisation de vos systèmes informatiques existants.",
+        },
+        infrastructure: {
+          title: "Solutions d'Infrastructure & Cloud",
+          description:
+            "Architecture cloud moderne et solutions d'infrastructure évolutives.",
+        },
       },
     },
     about: {
@@ -46,25 +55,30 @@ export const translations = {
       subtitle: "Votre partenaire de confiance pour l'excellence technologique",
       experience: {
         title: "Expertise Reconnue",
-        description: "Une équipe d'experts certifiés avec une expérience approfondie dans tous les domaines.",
+        description:
+          "Une équipe d'experts certifiés avec une expérience approfondie dans tous les domaines.",
       },
       global: {
         title: "Standards Internationaux",
-        description: "Conformité avec les normes internationales les plus strictes et reconnaissance mondiale.",
+        description:
+          "Conformité avec les normes internationales les plus strictes et reconnaissance mondiale.",
       },
       innovation: {
         title: "Innovation Continue",
-        description: "Adoption des dernières technologies et méthodologies pour rester à la pointe.",
+        description:
+          "Adoption des dernières technologies et méthodologies pour rester à la pointe.",
       },
       support: {
         title: "Support Dédié",
-        description: "Accompagnement personnalisé et support technique disponible 24/7.",
+        description:
+          "Accompagnement personnalisé et support technique disponible 24/7.",
       },
     },
     contact: {
       title: "Contactez-nous",
       subtitle: "Prêt à commencer votre projet ?",
-      description: "Contactez nos experts pour discuter de vos besoins et obtenir une solution sur mesure.",
+      description:
+        "Contactez nos experts pour discuter de vos besoins et obtenir une solution sur mesure.",
       phone: "+237 6 79 26 95 66",
       email: "contact@saficert.com",
       address: "Logbessou, Douala, Cameroun",
@@ -98,27 +112,36 @@ export const translations = {
       contact: "Contact Us",
     },
     services: {
-      title: "Our Excellence Services",
-      subtitle: "Comprehensive certification and technological development solutions",
-      quality: {
-        title: "Software Quality Assurance",
-        description: "Comprehensive testing and validation of your applications to ensure quality and performance.",
+      section: {
+        title: "Our Excellence Services",
+        subtitle: "Comprehensive certification and technological development solutions",
       },
-      development: {
-        title: "Application Development",
-        description: "Custom application development with latest technologies and best practices.",
-      },
-      web: {
-        title: "Website Creation",
-        description: "Modern, responsive and optimized websites for your digital presence.",
-      },
-      audit: {
-        title: "System Audit & Optimization",
-        description: "In-depth analysis and optimization of your existing IT systems.",
-      },
-      infrastructure: {
-        title: "Infrastructure & Cloud Solutions",
-        description: "Modern cloud architecture and scalable infrastructure solutions.",
+      items: {
+        quality: {
+          title: "Software Quality Assurance",
+          description:
+            "Comprehensive testing and validation of your applications to ensure quality and performance.",
+        },
+        development: {
+          title: "Application Development",
+          description:
+            "Custom application development with latest technologies and best practices.",
+        },
+        web: {
+          title: "Website Creation",
+          description:
+            "Modern, responsive and optimized websites for your digital presence.",
+        },
+        audit: {
+          title: "System Audit & Optimization",
+          description:
+            "In-depth analysis and optimization of your existing IT systems.",
+        },
+        infrastructure: {
+          title: "Infrastructure & Cloud Solutions",
+          description:
+            "Modern cloud architecture and scalable infrastructure solutions.",
+        },
       },
     },
     about: {
@@ -126,25 +149,30 @@ export const translations = {
       subtitle: "Your trusted partner for technological excellence",
       experience: {
         title: "Recognized Expertise",
-        description: "A team of certified experts with deep experience in all domains.",
+        description:
+          "A team of certified experts with deep experience in all domains.",
       },
       global: {
         title: "International Standards",
-        description: "Compliance with the strictest international standards and global recognition.",
+        description:
+          "Compliance with the strictest international standards and global recognition.",
       },
       innovation: {
         title: "Continuous Innovation",
-        description: "Adoption of latest technologies and methodologies to stay at the forefront.",
+        description:
+          "Adoption of latest technologies and methodologies to stay at the forefront.",
       },
       support: {
         title: "Dedicated Support",
-        description: "Personalized support and technical assistance available 24/7.",
+        description:
+          "Personalized support and technical assistance available 24/7.",
       },
     },
     contact: {
       title: "Contact Us",
       subtitle: "Ready to start your project?",
-      description: "Contact our experts to discuss your needs and get a customized solution.",
+      description:
+        "Contact our experts to discuss your needs and get a customized solution.",
       phone: "+237 6 79 26 95 66",
       email: "contact@saficert.com",
       address: "Logbessou, Douala, Cameroon",
@@ -153,7 +181,8 @@ export const translations = {
       description: "SafiCert: Build, Innovate and Succeed Together",
       menu: "Menu",
       services: "Services",
-      newsletter: "Subscribe to our newsletter to be informed of the launch and receive exclusive updates.",
+      newsletter:
+        "Subscribe to our newsletter to be informed of the launch and receive exclusive updates.",
       subscribe: "Subscribe",
       rights: "© 2025 SafiCert",
     },
