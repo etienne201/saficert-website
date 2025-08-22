@@ -74,6 +74,15 @@ export const translations = {
           "Accompagnement personnalisé et support technique disponible 24/7.",
       },
     },
+    blog: {
+      section: {
+        title: "Nos Derniers Articles",
+        subtitle: "Découvrez nos derniers articles sur la certification et l'assurance qualité",
+      },
+      cta: "Lire plus",
+      author: "Par",
+      date: "Publié le",
+    },
     contact: {
       title: "Contactez-nous",
       subtitle: "Prêt à commencer votre projet ?",
@@ -167,6 +176,15 @@ export const translations = {
         description:
           "Personalized support and technical assistance available 24/7.",
       },
+    },
+    blog: {
+      section: {
+        title: "Our Latest Articles",
+        subtitle: "Discover our latest articles on certification and quality assurance",
+      },
+      cta: "Read More",
+      author: "By",
+      date: "Published on",
     },
     contact: {
       title: "Contact Us",

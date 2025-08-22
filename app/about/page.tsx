@@ -102,7 +102,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="lg:w-1/2 animate-fade-in-up animation-delay-500">
-            <img src="/values-image.png" alt="Nos valeurs" className="rounded-2xl shadow-lg w-3/4 mx-auto" />
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nosvaleur-9JWKyXukxaj1nrlzz1SSJ10dLONGBF.webp" alt="Nos valeurs" className="rounded-2xl shadow-lg w-3/4 mx-auto" />
           </div>
         </div>
       </section>

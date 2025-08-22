@@ -180,19 +180,19 @@ export default function HomePage() {
                 title: "Assurance Qualité (QA)",
                 description: "Tests complets et validation rigoureuse de vos applications pour garantir une qualité optimale.",
                 icon: Shield,
-                image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/QASenior-vo89xNwLUU8D0OTrtqWTAv2pgwp72T.webp",
+                // image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/QASenior-vo89xNwLUU8D0OTrtqWTAv2pgwp72T.webp",
               },
               {
                 title: "Création de Sites Web",
                 description: "Conception et développement de sites web modernes, responsifs et optimisés pour le SEO.",
                 icon: Globe,
-                image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DesignWeb-lfbgP8c1alSdG7PE54bB5opu80opfM.webp",
+                // image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DesignWeb-lfbgP8c1alSdG7PE54bB5opu80opfM.webp",
               },
               {
                 title: "Applications Mobiles",
                 description: "Développement d'applications mobiles natives et cross-platform pour iOS et Android.",
                 icon: Zap,
-                image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/expertDev-XMJxD1nHpS7ZKMdMribIYwUlEyPvpo.png",
+                // image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/expertDev-XMJxD1nHpS7ZKMdMribIYwUlEyPvpo.png",
               },
               {
                 title: "Développement Logiciel",
@@ -227,11 +227,11 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base leading-relaxed text-gray-600">{service.description}</CardDescription>
-                  {service.image && (
+                  {/* {service.image && (
                     <div className="mt-4">
                       <Image src={service.image} alt={service.title} width={300} height={200} className="rounded-lg w-full object-cover" />
                     </div>
-                  )}
+                  )} */}
                 </CardContent>
               </Card>
             ))}
