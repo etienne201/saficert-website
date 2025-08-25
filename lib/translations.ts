@@ -1,3 +1,5 @@
+// lib/translations.ts
+
 export const translations = {
   fr: {
     nav: {
@@ -205,4 +207,4 @@ export const translations = {
       rights: "© 2025 SafiCert",
     },
   },
-}
+} as const
