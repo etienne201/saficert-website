@@ -20,7 +20,7 @@ const playfair = Playfair_Display({
 
 /** ✅ SEO & Métadonnées principales */
 export const metadata: Metadata = {
-  title: "SafiCert  Services B2B",
+  title: "SafiCert - Organisme de Certification Professionnel | Services B2B",
   description:
     "SafiCert : Leader en certification professionnelle. Services complets de certification B2B, normes internationales, assurance qualité. Expertise reconnue mondialement.",
   keywords: [
@@ -37,7 +37,9 @@ export const metadata: Metadata = {
   authors: [{ name: "SafiCert", url: "https://saficert.com" }],
   creator: "SafiCert",
   publisher: "SafiCert",
+  generator: "v0.app",
   metadataBase: new URL("https://saficert.com"), 
+
   robots: {
     index: true,
     follow: true,
@@ -49,8 +51,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
   openGraph: {
-    title: "SafiCert  Services B2B",
+    title: "SafiCert - Organisme de Certification Professionnel",
     description:
       "Leader en certification professionnelle avec des services B2B complets et une expertise reconnue mondialement.",
     type: "website",
@@ -60,23 +63,26 @@ export const metadata: Metadata = {
     siteName: "SafiCert",
     images: [
       {
-        url: "public/saficertlogo.png",
+        url: "/saficert-certification.png",
         width: 1200,
         height: 630,
-        alt: "SafiCert  Services B2B",
+        alt: "SafiCert - Services de Certification Professionnels",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: "SafiCert - Certification Professionnelle",
     description:
       "Leader en certification professionnelle avec expertise reconnue mondialement.",
-    images: ["public/images/saficertlogo.png"],
+    images: ["/saficert-certification.png"],
   },
+
   verification: {
     google: "your-google-verification-code",
   },
+
   alternates: {
     canonical: "https://saficert.com",
     languages: {
@@ -115,10 +121,6 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        {/* ✅ Favicon pour navigateur */}
-        <link rel="icon" href="public/images/saficertlogo.png" sizes="32x32" type="image/png" />
-        <link rel="shortcut icon" href="public/images/saficertlogo.png" type="image/png" />
-
         {/* ✅ JSON-LD Schema.org */}
         <script
           type="application/ld+json"
@@ -128,7 +130,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "SafiCert",
               url: "https://saficert.com",
-              logo: "public/images/saficertlogo.png",
+              logo: "https://saficert.com/logo.png",
               description:
                 "Organisme de certification professionnel leader en services B2B",
               address: {
@@ -152,7 +154,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased" suppressHydrationWarning>
+      <body 
+        className="antialiased"
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -161,12 +166,14 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-
+        
         {/* Script pour nettoyer les attributs des extensions */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
+              // Nettoyer les attributs ajoutés par les extensions
               if (typeof window !== 'undefined') {
+                // Attendre que le DOM soit complètement chargé
                 if (document.readyState === 'loading') {
                   document.addEventListener('DOMContentLoaded', cleanAttributes);
                 } else {
@@ -174,13 +181,21 @@ export default function RootLayout({
                 }
                 
                 function cleanAttributes() {
+                  // Nettoyer le body
                   document.body.removeAttribute('cz-shortcut-listen');
-                  const inputs = document.querySelectorAll('input');
-                  inputs.forEach(input => input.removeAttribute('data-has-listeners'));
                   
+                  // Nettoyer les inputs
+                  const inputs = document.querySelectorAll('input');
+                  inputs.forEach(input => {
+                    input.removeAttribute('data-has-listeners');
+                  });
+                  
+                  // Empêcher les futures modifications
                   const originalSetAttribute = Element.prototype.setAttribute;
                   Element.prototype.setAttribute = function(name, value) {
-                    if (name === 'cz-shortcut-listen' || name === 'data-has-listeners') return;
+                    if (name === 'cz-shortcut-listen' || name === 'data-has-listeners') {
+                      return;
+                    }
                     return originalSetAttribute.call(this, name, value);
                   };
                 }

@@ -8,6 +8,7 @@ import { translations } from "@/lib/translations"
 import { blogPostsData } from "@/app/data/blog-posts"
 import { BlogCard } from "@/components/blog/blog-card"
 import { Newsletter } from "@/app/Newsletter/Newsletter"
+ 
 
 export default function BlogPage() {
   const [language, setLanguage] = useState<"fr" | "en">("fr")
@@ -40,6 +41,7 @@ export default function BlogPage() {
       </section>
 
       {/* Footer */}
+   
       <Newsletter language={"fr"} />
       <Footer translations={t} />
       <WhatsAppButton language={language} />
