@@ -20,7 +20,7 @@ const playfair = Playfair_Display({
 
 /** ✅ SEO & Métadonnées principales */
 export const metadata: Metadata = {
-  title: "SafiCert - Organisme de Certification Professionnel | Services B2B",
+  title: "SafiCert  Services B2B",
   description:
     "SafiCert : Leader en certification professionnelle. Services complets de certification B2B, normes internationales, assurance qualité. Expertise reconnue mondialement.",
   keywords: [
@@ -37,9 +37,7 @@ export const metadata: Metadata = {
   authors: [{ name: "SafiCert", url: "https://saficert.com" }],
   creator: "SafiCert",
   publisher: "SafiCert",
-  generator: "v0.app",
   metadataBase: new URL("https://saficert.com"), 
-
   robots: {
     index: true,
     follow: true,
@@ -51,9 +49,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
   openGraph: {
-    title: "SafiCert - Organisme de Certification Professionnel",
+    title: "SafiCert  Services B2B",
     description:
       "Leader en certification professionnelle avec des services B2B complets et une expertise reconnue mondialement.",
     type: "website",
@@ -63,26 +60,23 @@ export const metadata: Metadata = {
     siteName: "SafiCert",
     images: [
       {
-        url: "/saficert-certification.png",
+        url: "public/saficertlogo.png",
         width: 1200,
         height: 630,
-        alt: "SafiCert - Services de Certification Professionnels",
+        alt: "SafiCert  Services B2B",
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "SafiCert - Certification Professionnelle",
     description:
       "Leader en certification professionnelle avec expertise reconnue mondialement.",
-    images: ["/saficert-certification.png"],
+    images: ["public/images/saficertlogo.png"],
   },
-
   verification: {
     google: "your-google-verification-code",
   },
-
   alternates: {
     canonical: "https://saficert.com",
     languages: {
@@ -121,6 +115,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
+        {/* ✅ Favicon pour navigateur */}
+        <link rel="icon" href="public/images/saficertlogo.png" sizes="32x32" type="image/png" />
+        <link rel="shortcut icon" href="public/images/saficertlogo.png" type="image/png" />
+
         {/* ✅ JSON-LD Schema.org */}
         <script
           type="application/ld+json"
@@ -130,7 +128,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "SafiCert",
               url: "https://saficert.com",
-              logo: "https://saficert.com/logo.png",
+              logo: "public/images/saficertlogo.png",
               description:
                 "Organisme de certification professionnel leader en services B2B",
               address: {
@@ -154,7 +152,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -163,6 +161,33 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+
+        {/* Script pour nettoyer les attributs des extensions */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', cleanAttributes);
+                } else {
+                  cleanAttributes();
+                }
+                
+                function cleanAttributes() {
+                  document.body.removeAttribute('cz-shortcut-listen');
+                  const inputs = document.querySelectorAll('input');
+                  inputs.forEach(input => input.removeAttribute('data-has-listeners'));
+                  
+                  const originalSetAttribute = Element.prototype.setAttribute;
+                  Element.prototype.setAttribute = function(name, value) {
+                    if (name === 'cz-shortcut-listen' || name === 'data-has-listeners') return;
+                    return originalSetAttribute.call(this, name, value);
+                  };
+                }
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   )

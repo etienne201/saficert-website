@@ -51,6 +51,85 @@ export const translations = {
             "Architecture cloud moderne et solutions d'infrastructure évolutives.",
         },
       },
+      detailed: {
+        qa: {
+          title: "QA Testing & Automatisation",
+          description:
+            "Nous proposons des tests logiciels manuels et automatisés pour assurer le bon fonctionnement, la performance optimale et une expérience utilisateur de qualité.",
+          features: ["Tests manuels approfondis", "Automatisation des tests", "Rapports détaillés", "Tests de performance"]
+        },
+        infrastructure: {
+          title: "Solutions d'Infrastructure & Cloud",
+          description:
+            "Nous proposons des solutions d'infrastructure complètes garantissant une haute disponibilité, sécurité et performance pour vos applications et sites web.",
+          features: ["Architecture cloud sécurisée", "Solutions hybrides", "Surveillance 24/7", "Sauvegarde et récupération"]
+        },
+        web: {
+          title: "Développement Web",
+          description:
+            "Nous créons des sites web modernes, sécurisés et performants, offrant une expérience utilisateur optimale, que ce soit pour un site vitrine ou une boutique en ligne.",
+          features: ["Design responsive", "SEO intégré", "E-commerce", "Maintenance continue"]
+        },
+        development: {
+          title: "Développement d'Applications",
+          description:
+            "Nous concevons des applications puissantes pour aider les entreprises à croître efficacement, qu'il s'agisse d'applications mobiles, de logiciels ou de solutions SaaS.",
+          features: ["Applications natives et hybrides", "API sécurisées", "Intégrations tierces", "Mises à jour régulières"]
+        },
+        audit: {
+          title: "Audit & Optimisation des Systèmes",
+          description:
+            "Nous proposons des services d'audit et d'optimisation IT afin d'aider les entreprises à identifier les inefficacités, renforcer la sécurité et améliorer la performance de leurs systèmes.",
+          features: ["Analyse complète", "Recommandations personnalisées", "Optimisation des performances", "Plan d'action détaillé"]
+        },
+        ux: {
+          title: "UI/UX Design",
+          description:
+            "En privilégiant un design convivial, vous simplifiez la navigation et améliorez l'expérience utilisateur. Un utilisateur satisfait est plus enclin à revenir et à recommander votre produit à d'autres.",
+          features: ["Design centré utilisateur", "Prototypes interactifs", "Tests d'utilisabilité", "Design systems"]
+        },
+      }
+    },
+    aboutPage: {
+      heroTitle: "À PROPOS DE SAFICERT",
+      heroSubtitle: "Votre partenaire pour",
+      whoWeAre: "Qui sommes-nous ?",
+      whoWeAreText1: "SafiCert est une Société de Services en Ingénierie Informatique (SSII) basée à Douala, Cameroun, spécialisée dans l'assurance qualité (QA), le développement d'applications et la création de sites web.",
+      whoWeAreText2: "Avec une expertise reconnue sur le marché local et international, nous accompagnons les entreprises dans l'optimisation de leurs produits numériques en garantissant des solutions robustes, performantes et adaptées aux standards mondiaux.",
+      ourValues: "Nos valeurs",
+      ourValuesText: "Chez SafiCert, nous nous appuyons sur des valeurs fondamentales qui définissent notre approche et notre vision.",
+      excellence: "Excellence",
+      excellenceDesc: "Nous nous engageons à fournir des solutions de haute qualité conformes aux standards internationaux.",
+      innovation: "Innovation",
+      innovationDesc: "Nous adoptons les technologies les plus avancées pour créer des solutions numériques performantes.",
+      reliability: "Fiabilité",
+      reliabilityDesc: "Nous garantissons des produits sécurisés et optimisés pour assurer une continuité d'activité sans faille.",
+      collaboration: "Collaboration",
+      collaborationDesc: "Nous travaillons en étroite synergie avec nos clients pour une parfaite adéquation avec leurs besoins.",
+      transparency: "Transparence",
+      transparencyDesc: "Nous instaurons une relation de confiance à travers une communication claire et des engagements tenus.",
+      passion: "Passion",
+      passionDesc: "Nous mettons notre passion au service de l'excellence pour dépasser les attentes de nos clients.",
+      expertTeam: "Une équipe d'experts à votre service",
+      expertTeamText: "Notre équipe est composée de professionnels hautement qualifiés, chacun apportant une expertise spécifique pour répondre aux défis du numérique avec précision et efficacité.",
+      qaEngineers: "Senior QA Engineers",
+      qaEngineersDesc: "Nos ingénieurs en assurance qualité appliquent des méthodologies de test avancées afin de garantir la performance et la sécurité des applications avant leur mise sur le marché.",
+      developers: "Expert Developers",
+      developersDesc: "Nos développeurs conçoivent des solutions logicielles évolutives et adaptées aux exigences des entreprises locales et internationales.",
+      designers: "Designers & Website Creators",
+      designersDesc: "Nos spécialistes en design et en création de sites web élaborent des interfaces intuitives et attrayantes pour optimiser l'expérience utilisateur.",
+      whyChoose: "Pourquoi choisir SafiCert ?",
+      whyChooseText: "SafiCert se distingue par son engagement à fournir des services de qualité qui répondent aux besoins des entreprises sur les marchés locaux et internationaux.",
+      whyChooseList1: "Une approche personnalisée pour chaque client",
+      whyChooseList2: "Une expertise reconnue dans l'assurance qualité et le développement digital",
+      whyChooseList3: "Une capacité d'intervention sur des projets à échelle locale et internationale",
+      whyChooseList4: "Une veille technologique continue pour garantir des solutions modernes et adaptées",
+      newsletterTitle: "Restez informé",
+      newsletterSubtitle: "Abonnez-vous à notre newsletter pour recevoir nos actualités et conseils",
+      newsletterPlaceholder: "Votre adresse email",
+      newsletterButton: "S'abonner",
+      newsletterSuccess: "Merci pour votre inscription !",
+      newsletterError: "Une erreur s'est produite. Veuillez réessayer.",
     },
     about: {
       title: "Pourquoi Choisir SafiCert ?",
@@ -103,6 +182,28 @@ export const translations = {
       subscribe: "S'abonner",
       rights: "© 2025 SafiCert",
     },
+    newsletter: {
+      success: "Inscription réussie !",
+      successDescription: "Merci de vous être abonné à notre newsletter.",
+      error: "Erreur",
+      errorDescription: "Une erreur s'est produite. Veuillez réessayer.",
+      placeholder: "Votre adresse email",
+      submitting: "Envoi...",
+      subscribe: "S'abonner",
+      title: "Restez Informé",
+      description: "Abonnez-vous à notre newsletter pour recevoir des conseils experts, des tendances industry et des offres exclusives."
+    },
+    testimonials: {
+      title: "Ce que disent nos clients",
+      subtitle: "Découvrez les expériences de ceux qui nous ont fait confiance",
+      text: "Leur expertise en développement web a transformé notre présence en ligne. Service professionnel et résultats exceptionnels."
+    },
+    common: {
+      learnMore: "En savoir plus",
+      discussProject: "Discuter de votre projet",
+      expertiseTitle: "Nos Domaines d'Expertise",
+      expertiseSubtitle: "Des services complets pour transformer votre vision digitale en réalité"
+    }
   },
   en: {
     nav: {
@@ -154,6 +255,85 @@ export const translations = {
             "Modern cloud architecture and scalable infrastructure solutions.",
         },
       },
+      detailed: {
+        qa: {
+          title: "QA Testing & Automation",
+          description:
+            "We offer manual and automated software tests to ensure optimal performance, smooth functionality, and a high-quality user experience.",
+          features: ["Comprehensive manual testing", "Test automation", "Detailed reporting", "Performance testing"]
+        },
+        infrastructure: {
+          title: "Infrastructure & Cloud Solutions",
+          description:
+            "We provide comprehensive infrastructure solutions ensuring high availability, security, and performance for your applications and websites.",
+          features: ["Secure cloud architecture", "Hybrid solutions", "24/7 monitoring", "Backup and recovery"]
+        },
+        web: {
+          title: "Web Development",
+          description:
+            "We create modern, secure, and high-performance websites, offering optimal user experience, whether for a showcase site or an online store.",
+          features: ["Responsive design", "Built-in SEO", "E-commerce", "Ongoing maintenance"]
+        },
+        development: {
+          title: "Application Development",
+          description:
+            "We design powerful applications to help businesses grow efficiently, including mobile apps, software, or SaaS solutions.",
+          features: ["Native and hybrid apps", "Secure APIs", "Third-party integrations", "Regular updates"]
+        },
+        audit: {
+          title: "System Audit & Optimization",
+          description:
+            "We provide IT audit and optimization services to help companies identify inefficiencies, strengthen security, and improve system performance.",
+          features: ["Comprehensive analysis", "Custom recommendations", "Performance optimization", "Detailed action plan"]
+        },
+        ux: {
+          title: "UI/UX Design",
+          description:
+            "By prioritizing user-friendly design, you simplify navigation and enhance the user experience. Satisfied users are more likely to return and recommend your product.",
+          features: ["User-centered design", "Interactive prototypes", "Usability testing", "Design systems"]
+        },
+      }
+    },
+    aboutPage: {
+      heroTitle: "ABOUT SAFICERT",
+      heroSubtitle: "Your partner for",
+      whoWeAre: "Who we are?",
+      whoWeAreText1: "SafiCert is an IT engineering service company (SSII) based in Douala, Cameroon, specialized in quality assurance (QA), application development, and website creation.",
+      whoWeAreText2: "With recognized expertise in local and international markets, we assist companies in optimizing their digital products by delivering robust, high-performance solutions that meet global standards.",
+      ourValues: "Our Values",
+      ourValuesText: "At SafiCert, we rely on core values that define our approach and vision.",
+      excellence: "Excellence",
+      excellenceDesc: "We are committed to delivering high-quality solutions in line with international standards.",
+      innovation: "Innovation",
+      innovationDesc: "We adopt the most advanced technologies to create high-performance digital solutions.",
+      reliability: "Reliability",
+      reliabilityDesc: "We guarantee secure and optimized products to ensure seamless business continuity.",
+      collaboration: "Collaboration",
+      collaborationDesc: "We work closely with our clients to perfectly meet their needs.",
+      transparency: "Transparency",
+      transparencyDesc: "We build trust through clear communication and fulfilled commitments.",
+      passion: "Passion",
+      passionDesc: "We put our passion into excellence to exceed our clients' expectations.",
+      expertTeam: "A Team of Experts at Your Service",
+      expertTeamText: "Our team is composed of highly qualified professionals, each bringing specific expertise to meet digital challenges with precision and efficiency.",
+      qaEngineers: "Senior QA Engineers",
+      qaEngineersDesc: "Our QA engineers apply advanced testing methodologies to ensure application performance and security before market release.",
+      developers: "Expert Developers",
+      developersDesc: "Our developers design scalable software solutions tailored to local and international business needs.",
+      designers: "Designers & Website Creators",
+      designersDesc: "Our design and website specialists create intuitive and attractive interfaces to optimize user experience.",
+      whyChoose: "Why Choose SafiCert?",
+      whyChooseText: "SafiCert stands out by committing to provide quality services that meet the needs of businesses in local and international markets.",
+      whyChooseList1: "A personalized approach for each client",
+      whyChooseList2: "Recognized expertise in quality assurance and digital development",
+      whyChooseList3: "Ability to work on projects locally and internationally",
+      whyChooseList4: "Continuous technological watch to ensure modern and adapted solutions",
+      newsletterTitle: "Stay Informed",
+      newsletterSubtitle: "Subscribe to our newsletter to receive news and advice",
+      newsletterPlaceholder: "Your email address",
+      newsletterButton: "Subscribe",
+      newsletterSuccess: "Thank you for subscribing!",
+      newsletterError: "An error occurred. Please try again.",
     },
     about: {
       title: "Why Choose SafiCert?",
@@ -206,5 +386,27 @@ export const translations = {
       subscribe: "Subscribe",
       rights: "© 2025 SafiCert",
     },
+    newsletter: {
+      success: "Subscription successful!",
+      successDescription: "Thank you for subscribing to our newsletter.",
+      error: "Error",
+      errorDescription: "An error occurred. Please try again.",
+      placeholder: "Your email address",
+      submitting: "Sending...",
+      subscribe: "Subscribe",
+      title: "Stay Informed",
+      description: "Subscribe to our newsletter to receive expert advice, industry trends and exclusive offers."
+    },
+    testimonials: {
+      title: "What our clients say",
+      subtitle: "Discover the experiences of those who trusted us",
+      text: "Their web development expertise transformed our online presence. Professional service and exceptional results."
+    },
+    common: {
+      learnMore: "Learn more",
+      discussProject: "Discuss your project",
+      expertiseTitle: "Our Expertise Areas",
+      expertiseSubtitle: "Comprehensive services to transform your digital vision into reality"
+    }
   },
-} as const
+} as const;
