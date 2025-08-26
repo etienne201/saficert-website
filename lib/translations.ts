@@ -11,13 +11,17 @@ export const translations = {
       contact: "Contactez-nous",
     },
     hero: {
-      badge: "Organisme Certifié ISO 9001:2015",
+      badge: "Expert en Assurance Qualité",
       title: "SafiCert",
-      subtitle: "Construire, Innover et Réussir Ensemble",
-      description:
-        "Votre partenaire de confiance pour tous vos besoins de certification professionnelle, développement logiciel et solutions technologiques. Excellence, innovation et conformité aux normes internationales les plus strictes.",
-      cta: "Découvrir Nos Services",
-      contact: "Contactez-nous",
+      slogans: [
+        "Nous façonnons l’avenir digital avec des solutions QA et IT sur-mesure : Développement Web, Applications Mobiles, Cloud, Consulting et Data Analytics.",
+        "La qualité d’abord : des technologies fiables et innovantes pour booster vos projets IT et accélérer votre transformation digitale.",
+        "Du test à la mise en production, nous garantissons la performance, la sécurité et l’innovation de vos solutions digitales.",
+        "QA & IT à 360° : Développement Web, Mobile, Cloud et Data Analytics – au service de votre croissance.",
+        "Votre partenaire stratégique en QA et IT : parce qu’une technologie réussie commence par une qualité irréprochable.",
+      ],
+      ctaServices: "Découvrir nos services",
+      ctaContact: "Nous contacter",
     },
     services: {
       section: {
@@ -215,13 +219,17 @@ export const translations = {
       contact: "Contact Us",
     },
     hero: {
-      badge: "ISO 9001:2015 Certified Organization",
+      badge: "Quality Assurance Expert",
       title: "SafiCert",
-      subtitle: "Build, Innovate and Succeed Together",
-      description:
-        "Your trusted partner for all your professional certification needs, software development and technological solutions. Excellence, innovation and compliance with the strictest international standards.",
-      cta: "Discover Our Services",
-      contact: "Contact Us",
+      slogans: [
+        "We shape the digital future with tailor-made QA and IT solutions: Web Development, Mobile Apps, Cloud, Consulting, and Data Analytics.",
+        "Quality first: reliable and innovative technologies to boost your IT projects and accelerate your digital transformation.",
+        "From testing to production, we ensure performance, security, and innovation for your digital solutions.",
+        "QA & IT at 360°: Web, Mobile, Cloud, and Data Analytics – serving your growth.",
+        "Your strategic partner in QA and IT: because successful technology starts with flawless quality.",
+      ],
+      ctaServices: "Discover our services",
+      ctaContact: "Contact us",
     },
     services: {
       section: {

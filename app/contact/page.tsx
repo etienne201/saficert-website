@@ -148,6 +148,7 @@ export default function ContactPage() {
                     >
                       <MessageCircle className="h-4 w-4 mr-2" />
                       {language === "fr" ? "Nous écrire" : "Message us"}
+                     
                     </a>
                   </div>
                 </div>
