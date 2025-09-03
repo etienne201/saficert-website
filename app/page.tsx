@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,486 +12,392 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Newsletter } from "@/app/Newsletter/Newsletter"
 import {
-  Award,
-  Phone,
-  Shield,
-  Globe,
-  Briefcase,
-  ChevronRight,
-  CheckCircle,
-  Users,
-  Clock,
-  Smartphone,
-  Server,
-  BarChart3,
-  Rocket,
-  ShieldCheck,
-  Target,
-  Zap,
+  Award, Phone, Shield, Globe, Briefcase, ChevronRight,
+  Smartphone, Server, BarChart3, Star, CheckCircle, Lightbulb, TrendingUp, Calendar, User
 } from "lucide-react"
 import { translations } from "@/lib/translations"
 
 export default function HomePage() {
   const [language, setLanguage] = useState<"fr" | "en">("fr")
-  const [currentSloganIndex, setCurrentSloganIndex] = useState(0)
-  const [clientsCount, setClientsCount] = useState(0)
-  const [experienceCount, setExperienceCount] = useState(0)
-  const [projectsCount, setProjectsCount] = useState(0)
-  const [supportHours, setSupportHours] = useState(0)
-
   const t = translations[language]
-  
-  const heroContent = language === "fr" 
+
+  const slogansFr = [
+    "La qualité, code après code.",
+    "L'expertise qui anticipe, la technologie qui inspire.",
+    "Nous certifions l'excellence de votre digital.",
+    "De l'idée à l'application, nous assurons l'exception.",
+    "La rigueur du test, la passion du parfait."
+  ]
+
+  const slogansEn = [
+    "Quality, code after code.",
+    "Expertise that anticipates, technology that inspires.",
+    "We certify the excellence of your digital.",
+    "From idea to application, we ensure exception.",
+    "The rigor of testing, the passion for perfection."
+  ]
+
+  const slogans = language === "fr" ? slogansFr : slogansEn
+
+  const sloganColors = [
+    "text-yellow-300",
+    "text-green-300",
+    "text-pink-300",
+    "text-orange-300",
+    "text-cyan-300"
+  ]
+
+  const [currentSlogan, setCurrentSlogan] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlogan((prev) => (prev + 1) % slogans.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [slogans.length])
+
+  const heroContent = language === "fr"
     ? {
-        title: "Welcome to Saficert",
-        subtitle1: "Votre partenaire en solutions QA et IT sur-mesure : Développement Web, Applications Mobiles, Cloud et Data Analytics.",
-        subtitle2: "Nous garantissons performance, sécurité et innovation pour vos projets digitaux."
-      } 
+        title: "Bienvenue chez Saficert",
+        subtitle: `Dans le monde numérique, une seule faille peut coûter confiance et croissance. SafiCert protège votre excellence digitale grâce à son expertise en Assurance Qualité (QA). Du web au mobile en passant par le cloud, nous anticipons les risques, éliminons les erreurs et créons des expériences fluides. Nos services — Développement Web, Applications Mobiles, Solutions Cloud, Consulting IT et Data Analytics — offrent plus que de la technologie : la confiance et la réussite durable.`
+      }
     : {
         title: "Welcome to Saficert",
-        subtitle1: "Your partner for custom QA and IT solutions: Web Development, Mobile Apps, Cloud and Data Analytics.",
-        subtitle2: "We guarantee performance, security and innovation for your digital projects."
+        subtitle: `In the digital world, a single flaw can cost trust and growth. SafiCert protects your digital excellence through its expertise in Quality Assurance (QA). From web to mobile to cloud, we anticipate risks, eliminate errors, and create fluid experiences. Our services — Web Development, Mobile Applications, Cloud Solutions, IT Consulting, and Data Analytics — offer more than technology: confidence and long-term success.`
       }
+
+ 
+
+  const whyChooseUsContent = language === "fr"
+    ? [
+        { icon: <CheckCircle className="h-7 w-7 text-blue-700" />, title: "Expertise Certifiée", description: "Une équipe d'experts QA et de développeurs certifiés pour des solutions fiables." },
+        { icon: <Lightbulb className="h-7 w-7 text-blue-700" />, title: "Innovation Constante", description: "Nous restons à la pointe de la technologie pour vous offrir les meilleures solutions." },
+        { icon: <TrendingUp className="h-7 w-7 text-blue-700" />, title: "Résultats mesurables", description: "Nos stratégies sont axées sur la croissance de votre entreprise." }
+      ]
+    : [
+        { icon: <CheckCircle className="h-7 w-7 text-blue-700" />, title: "Certified Expertise", description: "A team of certified QA and developers for reliable solutions." },
+        { icon: <Lightbulb className="h-7 w-7 text-blue-700" />, title: "Constant Innovation", description: "We stay at the forefront of technology to provide you with the best solutions." },
+        { icon: <TrendingUp className="h-7 w-7 text-blue-700" />, title: "Measurable Results", description: "Our strategies are focused on the growth of your business." }
+      ]
 
   const servicesContent = language === "fr"
     ? [
+        { title: "Assurance Qualité", description: "Tests rigoureux et validation complète pour garantir la fiabilité et les performances." },
+        { title: "Développement Web", description: "Sites modernes, responsives et optimisés pour une expérience exceptionnelle." },
+        { title: "Applications Mobiles", description: "Expérience fluide avec des apps natives et cross-platform." },
+        { title: "Solutions Cloud", description: "Infrastructure scalable et sécurisée adaptée à vos besoins." },
+        { title: "Consulting IT", description: "Conseils stratégiques et accompagnement sur-mesure." },
+        { title: "Data Analytics", description: "Exploitez vos données pour des décisions éclairées." }
+      ]
+    : [
+        { title: "Quality Assurance", description: "Rigorous testing and validation for reliability and performance." },
+        { title: "Web Development", description: "Modern, responsive websites optimized for exceptional experience." },
+        { title: "Mobile Applications", description: "Smooth experience with native and cross-platform apps." },
+        { title: "Cloud Solutions", description: "Scalable and secure infrastructure for evolving needs." },
+        { title: "IT Consulting", description: "Strategic advice and tailored support." },
+        { title: "Data Analytics", description: "Turn your data into actionable insights." }
+      ]
+
+  const clients = [
+    {
+      name: "Jean Dupont",
+      role: language === "fr" ? "Co-fondateur" : "Co-founder",
+      company: "BEECEM",
+      review: language === "fr"
+        ? "Saficert nous a aidés à améliorer la performance de nos applications. Un partenaire de confiance !"
+        : "Saficert helped us improve our application performance. A trusted partner!",
+      date: "12/08/2025",
+      stars: 5,
+      photo: "/images/client.jpeg"
+    },
+    {
+      name: "Sarah Martin",
+      role: language === "fr" ? "Directrice IT" : "IT Director",
+      company: "TechOne",
+      review: language === "fr"
+        ? "Une équipe réactive et professionnelle. Nos projets cloud ont été livrés avec succès."
+        : "A responsive and professional team. Our cloud projects were delivered successfully.",
+      date: "20/07/2025",
+      stars: 4,
+      photo: "/images/client.jpeg"
+    }
+  ]
+  
+  const latestBlogs = language === "fr"
+    ? [
         {
-          title: "Assurance Qualité",
-          description: "Tests rigoureux et validation complète pour garantir la fiabilité et les performances de vos applications.",
-          features: ["Tests fonctionnels", "Tests de performance", "Tests de sécurité", "Automatisation"]
+          title: "Les dernières tendances en certification ISO",
+          excerpt: "Découvrez les nouvelles normes ISO et leur impact sur votre entreprise.",
+          image: "/images/blocs2.webp",
+         link: "/blog",
+          category: "Certification",
+          date: "15 janvier 2025",
+          author: "SafiCert Team"
         },
         {
-          title: "Développement Web",
-          description: "Sites web modernes, responsives et optimisés pour une expérience utilisateur exceptionnelle.",
-          features: ["React/Next.js", "Design responsive", "SEO optimization", "E-commerce"]
+          title: "Comment choisir la bonne solution Cloud ?",
+          excerpt: "Un guide complet pour vous aider à prendre la bonne décision pour votre infrastructure...",
+          image: "/images/bloc1.webp",
+          link: "/blog",
+          category: "Technologie",
+          date: "10 janvier 2025",
+          author: "SafiCert Team"
         },
-        {
-          title: "Applications Mobiles",
-          description: "Applications natives et cross-platform offrant une expérience mobile fluide et intuitive.",
-          features: ["iOS & Android", "Applications hybrides", "UI/UX design", "Publication"]
-        },
-        {
-          title: "Solutions Cloud",
-          description: "Infrastructure cloud scalable et sécurisée pour répondre à vos besoins évolutifs.",
-          features: ["Architecture cloud", "Sécurité avancée", "Scalabilité", "Sauvegarde"]
-        },
-        {
-          title: "Consulting IT",
-          description: "Conseils stratégiques et accompagnement personnalisé pour vos projets digitaux.",
-          features: ["Stratégie digitale", "Audit technique", "Optimisation", "Formation"]
-        },
-        {
-          title: "Data Analytics",
-          description: "Transformez vos données en insights actionnables pour une prise de décision éclairée.",
-          features: ["Tableaux de bord", "Reporting personnalisé", "Analyse prédictive", "KPI tracking"]
-        }
       ]
     : [
         {
-          title: "Quality Assurance",
-          description: "Rigorous testing and complete validation to guarantee the reliability and performance of your applications.",
-          features: ["Functional tests", "Performance tests", "Security tests", "Automation"]
+          title: "Latest Trends in ISO Certification",
+          excerpt: "Discover the new ISO standards and their impact on your business.",
+          image: "/images/blog-1.jpeg",
+          link: "/blog/certification-trends-iso",
+          category: "Certification",
+          date: "January 15, 2025",
+          author: "SafiCert Team"
         },
         {
-          title: "Web Development",
-          description: "Modern, responsive websites optimized for an exceptional user experience.",
-          features: ["React/Next.js", "Responsive design", "SEO optimization", "E-commerce"]
+          title: "How to Choose the Right Cloud Solution?",
+          excerpt: "A comprehensive guide to help you make the right decision for your infrastructure...",
+          image: "/images/blog-2.jpeg",
+          link: "/blog/choose-cloud-solution",
+          category: "Technology",
+          date: "January 10, 2025",
+          author: "SafiCert Team"
         },
-        {
-          title: "Mobile Applications",
-          description: "Native and cross-platform applications offering a smooth and intuitive mobile experience.",
-          features: ["iOS & Android", "Hybrid apps", "UI/UX design", "Publishing"]
-        },
-        {
-          title: "Cloud Solutions",
-          description: "Scalable and secure cloud infrastructure to meet your evolving needs.",
-          features: ["Cloud architecture", "Advanced security", "Scalability", "Backup"]
-        },
-        {
-          title: "IT Consulting",
-          description: "Strategic advice and personalized support for your digital projects.",
-          features: ["Digital strategy", "Technical audit", "Optimization", "Training"]
-        },
-        {
-          title: "Data Analytics",
-          description: "Transform your data into actionable insights for informed decision making.",
-          features: ["Dashboards", "Custom reporting", "Predictive analysis", "KPI tracking"]
-        }
       ]
-
-  useEffect(() => {
-    const animateCounter = (setter: (value: number) => void, target: number, duration = 2000) => {
-      let start = 0
-      const increment = target / (duration / 16)
-      const timer = setInterval(() => {
-        start += increment
-        if (start >= target) {
-          setter(target)
-          clearInterval(timer)
-        } else setter(Math.floor(start))
-      }, 16)
-    }
-
-    const timer = setTimeout(() => {
-      animateCounter(setClientsCount, 250)
-      animateCounter(setExperienceCount, 8)
-      animateCounter(setProjectsCount, 500)
-      animateCounter(setSupportHours, 24)
-    }, 1000)
-
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
     <div className="min-h-screen bg-white">
       <Header language={language} onLanguageChange={setLanguage} translations={t} />
 
-      {/* Hero Section avec image de fond */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
-          alt="Hero background"
-          fill
-          priority
-          className="object-cover object-center scale-105 animate-zoomSlow"
-        />
-        
-        {/* Overlay sombre pour améliorer la lisibilité */}
-        <div className="absolute inset-0 bg-black/50"></div>
-        
-        {/* Éléments décoratifs animés */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse-slow"></div>
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-cyan-400 rounded-full mix-blend-soft-light filter blur-3xl opacity-10 animate-ping-slow"></div>
-        </div>
+      {/* HERO */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#1940BF] to-[#0A1F63] text-white text-center px-6 py-24">
+        {/* Placeholder for video or background image */}
+        <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-30"></div>
+        <div className="relative z-10 flex flex-col items-center justify-center">
+            <Badge variant="secondary" className="mb-6 px-5 py-2 bg-white/20 text-white border-white/30 backdrop-blur-sm">
+            <Award className="h-5 w-5 mr-2" />
+            {language === "fr" ? "Expert en Solutions Digitales" : "Digital Solutions Expert"}
+            </Badge>
 
-        <div className="container mx-auto relative z-10 max-w-6xl px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-left">
-              <Badge
-                variant="secondary"
-                className="mb-8 px-6 py-3 text-lg bg-white/20 text-white border-white/30 backdrop-blur-sm animate-fade-in"
-              >
-                <Award className="h-5 w-5 mr-2" />
-                {language === "fr" ? "Expert en Assurance Qualité" : "Quality Assurance Expert"}
-              </Badge>
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">{heroContent.title}</h1>
 
-              {/* Texte principal révisé */}
-              <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
-                {heroContent.title}
-              </h1>
-
-              <p className="text-xl text-blue-100 max-w-2xl leading-relaxed mb-4 backdrop-blur-sm bg-black/20 p-4 rounded-lg">
-                {heroContent.subtitle1}
-              </p>
-
-              <p className="text-lg text-blue-100 max-w-2xl leading-relaxed mb-8 backdrop-blur-sm bg-black/20 p-4 rounded-lg">
-                {heroContent.subtitle2}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-6 mt-8">
-                <Link href="/services">
-                  <Button
-                    size="lg"
-                    className="gap-3 px-10 py-4 text-lg bg-white text-blue-800 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 animate-bounce-slow"
-                  >
-                    {language === "fr" ? "Découvrir nos services" : "Discover our services"}
-                    <ChevronRight className="h-6 w-6" />
-                  </Button>
-                </Link>
-
-                <Link href="/contact">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="gap-3 px-10 py-4 text-lg bg-transparent border-white text-white hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    <Phone className="h-6 w-6" />
-                    {language === "fr" ? "Nous contacter" : "Contact us"}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="flex justify-center">
-              <div className="relative max-w-md">
-                <div className="absolute -inset-4 bg-blue-400/20 rounded-2xl blur-xl animate-pulse"></div>
-                <Image
-                  src="/images/saficertlogo.png"
-                  alt={language === "fr" ? "Innovation SafiCert" : "SafiCert Innovation"}
-                  width={400}
-                  height={400}
-                  className="relative z-10 rounded-lg shadow-2xl transform transition-all duration-700 hover:scale-105"
-                />
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center shadow-xl animate-bounce">
-                  <Rocket className="h-10 w-10 text-blue-900" />
-                </div>
-                <div className="absolute -top-6 -left-6 w-20 h-20 bg-green-500 rounded-full flex items-center justify-center shadow-xl animate-spin-slow">
-                  <ShieldCheck className="h-8 w-8 text-white" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Statistics Section avec fond dégradé animé */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-dots-pattern opacity-10"></div>
-        <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
-          {[
-            { value: clientsCount, label: language === "fr" ? "Clients Satisfaits" : "Satisfied Clients", icon: Users, color: "bg-blue-100" },
-            { value: experienceCount, label: language === "fr" ? "Ans d'Expertise" : "Years of Expertise", icon: Award, color: "bg-purple-100" },
-            { value: projectsCount, label: language === "fr" ? "Projets Livrés" : "Projects Delivered", icon: CheckCircle, color: "bg-cyan-100" },
-            { value: supportHours, label: language === "fr" ? "Support 24/7" : "24/7 Support", icon: Clock, color: "bg-green-100" },
-          ].map((stat, idx) => (
-            <div 
-              key={idx} 
-              className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition-all duration-500 hover:shadow-lg hover:-translate-y-2"
-              style={{ animationDelay: `${idx * 200}ms` }}
+            <motion.p
+            key={currentSlogan}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.6 }}
+            className={`text-2xl font-semibold mb-8 ${sloganColors[currentSlogan]}`}
             >
-              <div className={`w-12 h-12 ${stat.color} rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-110`}>
-                <stat.icon className="h-6 w-6 text-blue-700" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-blue-700 mb-2">
-                {stat.value}{idx === 3 ? "/7" : "+"}
-              </div>
-              <div className="text-gray-600 font-medium">{stat.label}</div>
+            {slogans[currentSlogan]}
+            </motion.p>
+
+            <p className="text-lg text-blue-100 max-w-3xl whitespace-pre-line leading-relaxed mb-12">
+            {heroContent.subtitle}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link href="/services">
+                <Button size="lg" className="px-8 py-4 bg-white text-blue-800 hover:bg-white/90">
+                {language === "fr" ? "Découvrir nos services" : "Discover our services"}
+                <ChevronRight className="ml-2 h-5 w-5" />
+                </Button>
+            </Link>
+            <Link href="/contact">
+                <Button variant="outline" size="lg" className="px-8 py-4 border-white text-white hover:bg-white/10">
+                <Phone className="mr-2 h-5 w-5" />
+                {language === "fr" ? "Nous contacter" : "Contact us"}
+                </Button>
+            </Link>
             </div>
-          ))}
         </div>
       </section>
 
-      {/* Services Section avec fond animé */}
-      <section className="py-24 px-4 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
-        
-        <div className="container mx-auto max-w-7xl relative z-10">
+ 
+
+      {/* SERVICES */}
+      <section className="py-24 px-6 bg-gradient-to-br from-white to-blue-50">
+        <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-900 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               {language === "fr" ? "Nos Domaines d'Expertise" : "Our Areas of Expertise"}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-              {language === "fr" 
-                ? "Des solutions complètes pour transformer vos idées en réalités digitales performantes et innovantes."
-                : "Complete solutions to transform your ideas into high-performance and innovative digital realities."}
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              {language === "fr"
+                ? "Nous proposons des solutions complètes pour transformer vos idées en réalités digitales performantes."
+                : "We provide complete solutions to transform your ideas into powerful digital realities."}
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicesContent.map((service, idx) => (
-              <Card
-                key={idx}
-                className="group hover:shadow-xl transition-all duration-500 border-blue-100 hover:border-blue-300 bg-white overflow-hidden transform hover:-translate-y-2"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${
-                  idx % 6 === 0 ? "from-blue-500 to-blue-700" :
-                  idx % 6 === 1 ? "from-purple-500 to-purple-700" :
-                  idx % 6 === 2 ? "from-cyan-500 to-cyan-700" :
-                  idx % 6 === 3 ? "from-green-500 to-green-700" :
-                  idx % 6 === 4 ? "from-orange-500 to-orange-700" :
-                  "from-red-500 to-red-700"
-                }`}></div>
-                <CardHeader className="pb-4 pt-6">
-                  <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-all duration-300 group-hover:scale-110">
-                    {idx % 6 === 0 ? <Shield className="h-8 w-8 text-blue-700" /> :
-                     idx % 6 === 1 ? <Globe className="h-8 w-8 text-blue-700" /> :
-                     idx % 6 === 2 ? <Smartphone className="h-8 w-8 text-blue-700" /> :
-                     idx % 6 === 3 ? <Server className="h-8 w-8 text-blue-700" /> :
-                     idx % 6 === 4 ? <Briefcase className="h-8 w-8 text-blue-700" /> :
-                     <BarChart3 className="h-8 w-8 text-blue-700" />}
+              <Card key={idx} className="hover:shadow-xl transition-all duration-300">
+                <CardHeader>
+                  <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                    {idx === 0 ? <Shield className="h-7 w-7 text-blue-700" /> :
+                     idx === 1 ? <Globe className="h-7 w-7 text-blue-700" /> :
+                     idx === 2 ? <Smartphone className="h-7 w-7 text-blue-700" /> :
+                     idx === 3 ? <Server className="h-7 w-7 text-blue-700" /> :
+                     idx === 4 ? <Briefcase className="h-7 w-7 text-blue-700" /> :
+                     <BarChart3 className="h-7 w-7 text-blue-700" />}
                   </div>
                   <CardTitle className="text-xl text-blue-900">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base leading-relaxed text-gray-600 mb-4">
-                    {service.description}
-                  </CardDescription>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-sm text-gray-500 transition-all duration-300 hover:text-gray-700 hover:translate-x-1">
-                        <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <CardDescription className="text-gray-600">{service.description}</CardDescription>
                 </CardContent>
               </Card>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="text-center mt-12">
-            <Link href="/services">
-              <Button
-                size="lg"
-                className="gap-3 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                {language === "fr" ? "Explorer tous nos services" : "Explore all our services"}
-                <ChevronRight className="h-5 w-5" />
+      {/* WHY CHOOSE US */}
+      <section className="py-24 px-6 bg-blue-50">
+          <div className="container mx-auto max-w-7xl">
+              <div className="text-center mb-16">
+                  <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+                      {language === "fr" ? "Pourquoi choisir Saficert ?" : "Why Choose Saficert?"}
+                  </h2>
+                  <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                      {language === "fr" ? "Notre approche unique et notre engagement envers la qualité nous distinguent." : "Our unique approach and commitment to quality set us apart."}
+                  </p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-10">
+                  {whyChooseUsContent.map((item, idx) => (
+                      <Card key={idx} className="text-center p-6 shadow-md border-t-4 border-blue-600">
+                          <CardHeader className="flex items-center justify-center mb-4">
+                              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                  {item.icon}
+                              </div>
+                          </CardHeader>
+                          <CardTitle className="text-xl text-blue-900 mb-2">{item.title}</CardTitle>
+                          <CardDescription className="text-gray-600">{item.description}</CardDescription>
+                      </Card>
+                  ))}
+              </div>
+          </div>
+      </section>
+
+      {/* CTA MID-PAGE */}
+      <section className="bg-blue-600 text-white py-20 px-6">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            {language === "fr" ? "Prêt à transformer votre entreprise ?" : "Ready to transform your business?"}
+          </h2>
+          <p className="text-lg mb-8 text-blue-100">
+            {language === "fr" ? "Contactez-nous dès aujourd'hui pour une consultation gratuite et personnalisée." : "Contact us today for a free and personalized consultation."}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <Button size="lg" className="px-8 py-4 bg-white text-blue-800 hover:bg-white/90">
+                {language === "fr" ? "Commencer le projet" : "Start a project"}
+                <ChevronRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Clients Section avec animation de flottement */}
-      <section className="py-24 px-4 bg-gradient-to-r from-blue-50 to-indigo-50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="container mx-auto max-w-7xl relative z-10">
+      {/* CLIENTS */}
+      <section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               {language === "fr" ? "Ils nous font confiance" : "They Trust Us"}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {language === "fr" 
-                ? "Des entreprises de toutes tailles nous font confiance pour leurs projets digitaux les plus exigeants."
-                : "Companies of all sizes trust us for their most demanding digital projects."}
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {language === "fr"
+                ? "Découvrez les témoignages de nos clients satisfaits."
+                : "Read testimonials from our happy clients."}
             </p>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center mb-16">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-              <div 
-                key={item} 
-                className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition-all duration-500 hover:shadow-lg hover:-translate-y-2"
-                style={{ animationDelay: `${item * 100}ms` }}
-              >
-                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
-                  <div className="text-2xl font-bold text-blue-700">C{item}</div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {clients.map((client, idx) => (
+              <Card key={idx} className="p-6 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <Image src={client.photo} alt={client.name} width={60} height={60} className="rounded-full object-cover" />
+                  <div>
+                    <h3 className="font-semibold text-blue-900">{client.name}</h3>
+                    <p className="text-sm text-gray-500">{client.role} @ {client.company}</p>
+                  </div>
                 </div>
-                <div className="mt-4 text-center font-semibold text-blue-900">
-                  {language === "fr" ? `Client ${item}` : `Client ${item}`}
+                <p className="text-gray-600 mb-4">“{client.review}”</p>
+                <div className="flex items-center justify-between">
+                  <div className="flex text-yellow-500">
+                    {Array.from({ length: client.stars }).map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-yellow-500" />
+                    ))}
+                  </div>
+                  <span className="text-sm text-gray-400">{client.date}</span>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="bg-gradient-to-r from-blue-700 to-blue-900 rounded-2xl p-8 text-center text-white transform transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              {language === "fr" ? "Rejoignez nos clients satisfaits" : "Join our satisfied clients"}
-            </h3>
-            <p className="mb-6 max-w-2xl mx-auto">
-              {language === "fr" 
-                ? "Contactez-nous dès aujourd'hui pour discuter de votre projet et découvrir comment nous pouvons vous aider à réussir."
-                : "Contact us today to discuss your project and discover how we can help you succeed."}
+      {/* BLOG / NEWS SECTION */}
+      <section className="py-24 px-6 bg-white">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+              {language === "fr" ? "Notre Blog" : "Our Blog"}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              {language === "fr" ? "Découvrez nos dernières analyses, conseils et actualités." : "Read our latest insights, tips, and news."}
             </p>
-            
-            <Link href="/contact">
-              <Button size="lg" className="bg-white text-blue-800 hover:bg-gray-100 transform hover:scale-105 transition-all">
-                {language === "fr" ? "Demander un devis" : "Request a quote"}
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {latestBlogs.map((post, idx) => (
+              <Card key={idx} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                <div className="relative w-full h-48 overflow-hidden">
+                  <Image 
+                    src={post.image} 
+                    alt={post.title} 
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-blue-600 text-white">{post.category}</Badge>
+                  </div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl text-blue-900 mb-2 line-clamp-2">{post.title}</CardTitle>
+                  <CardDescription className="text-gray-600 mb-4">{post.excerpt}</CardDescription>
+                  <div className="flex items-center text-sm text-gray-500 mt-4">
+                    <div className="flex items-center mr-4">
+                      <Calendar className="h-4 w-4 mr-1" />
+                      <span>{post.date}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <User className="h-4 w-4 mr-1" />
+                      <span>{post.author}</span>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <Link href={post.link} className="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center">
+                    {language === "fr" ? "Lire plus" : "Read more"} <ChevronRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link href="/blog">
+              <Button variant="outline" size="lg" className="px-8 py-4 border-blue-600 text-blue-600 hover:bg-blue-50">
+                {language === "fr" ? "Voir tous les articles" : "View all articles"}
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      {/* NEWSLETTER */}
       <Newsletter language={language} />
 
       <Footer translations={t} />
       <WhatsAppButton language={language} />
-
-      <style jsx global>{`
-        @keyframes zoomSlow {
-          0% { transform: scale(1); }
-          100% { transform: scale(1.05); }
-        }
-        
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-          100% { transform: translateY(0px); }
-        }
-        
-        @keyframes blob {
-          0% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-          100% { transform: translate(0px, 0px) scale(1); }
-        }
-        
-        @keyframes pulse-slow {
-          0% { opacity: 0.2; }
-          50% { opacity: 0.3; }
-          100% { opacity: 0.2; }
-        }
-        
-        @keyframes ping-slow {
-          0% { transform: scale(1); opacity: 0.1; }
-          50% { transform: scale(1.5); opacity: 0.2; }
-          100% { transform: scale(1); opacity: 0.1; }
-        }
-        
-        @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        .animate-zoomSlow {
-          animation: zoomSlow 20s ease-in-out infinite alternate;
-        }
-        
-        .animate-fade-in {
-          animation: fadeIn 1s ease-out;
-        }
-        
-        .animate-fade-in-up {
-          animation: fadeIn 0.8s ease-out;
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        
-        .animate-blob {
-          animation: blob 10s infinite;
-        }
-        
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        
-        .animate-pulse-slow {
-          animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        .animate-ping-slow {
-          animation: ping-slow 4s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-        
-        .animate-bounce-slow {
-          animation: bounce-slow 3s infinite;
-        }
-        
-        .animate-spin-slow {
-          animation: spin-slow 15s linear infinite;
-        }
-        
-        .bg-dots-pattern {
-          background-image: radial-gradient(#3b82f6 1px, transparent 1px);
-          background-size: 20px 20px;
-        }
-        
-        .bg-grid-pattern {
-          background-image: 
-            linear-gradient(to right, #3b82f6 1px, transparent 1px),
-            linear-gradient(to bottom, #3b82f6 1px, transparent 1px);
-          background-size: 40px 40px;
-        }
-      `}</style>
     </div>
   )
 }

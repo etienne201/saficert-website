@@ -8,7 +8,6 @@ import { Footer } from "@/components/layout/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { CheckCircle, Shield, Server, Globe, Zap, Target, Layout } from "lucide-react"
 import { translations } from "@/lib/translations"
 import { Newsletter } from "@/app/Newsletter/Newsletter"
@@ -147,45 +146,48 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 px-4 bg-white">
+      {/* Nos Domaines d'Expertise Section */}
+      <section className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto">
+          {/* Titre + sous-titre */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {t.common.expertiseTitle}
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+              Nos Domaines d'Expertise
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t.common.expertiseSubtitle}
+            <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              Des services complets pour transformer votre vision digitale en réalité
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Grille des services */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {services.map(({ key, icon: Icon, color, bgColor, title, description, features }, index) => (
               <motion.div
                 key={key}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card
-                  className={`group border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2`}
-                >
-                  <div className={`h-2 ${bgColor}`} />
-                  <CardHeader className="pb-4">
+                <Card className="group h-full border-none shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 rounded-2xl">
+                  {/* Bandeau coloré */}
+                  <div className={`h-1.5 ${bgColor}`} />
+
+                  <CardHeader className="pb-2">
                     <div
-                      className={`w-16 h-16 rounded-xl ${bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500`}
+                      className={`w-14 h-14 rounded-xl ${bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500`}
                     >
-                      <Icon className={`h-8 w-8 ${color}`} />
+                      <Icon className={`h-7 w-7 ${color}`} />
                     </div>
-                    <CardTitle className="text-xl text-gray-900">{title}</CardTitle>
+                    <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
                   </CardHeader>
+
                   <CardContent>
-                    <CardDescription className="text-gray-600 leading-relaxed mb-4">
-                      {description}
-                    </CardDescription>
-                    {features.length > 0 && (
-                      <ul className="space-y-2 mb-4">
+                    <CardDescription className="text-gray-600 leading-relaxed mb-6">{description}</CardDescription>
+
+                    {/* Liste des features */}
+                    {/* {features.length > 0 && (
+                      <ul className="space-y-2 mb-6">
                         {features.map((feature, i) => (
                           <li key={i} className="flex items-start">
                             <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
@@ -193,10 +195,11 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
-                    )}
+                    )} */}
+
                     <Button
                       variant="outline"
-                      className="w-full mt-2 group-hover:bg-[#1940BF] group-hover:text-white transition-colors"
+                      className="w-full font-medium rounded-xl group-hover:bg-[#1940BF] group-hover:text-white transition-colors"
                       onClick={() => router.push("/contact")}
                     >
                       En savoir plus
@@ -209,8 +212,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-    {/* Newsletter Section */}
-    <Newsletter language={"fr"} />
+      {/* Newsletter Section */}
+      <Newsletter language={"fr"} />
 
       {/* Footer et WhatsApp */}
       <Footer translations={t} />
