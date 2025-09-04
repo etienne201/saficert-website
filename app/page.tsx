@@ -59,11 +59,11 @@ export default function HomePage() {
   const heroContent = language === "fr"
     ? {
         title: "Bienvenue chez Saficert",
-        subtitle: `Dans le monde numérique, une seule faille peut coûter confiance et croissance. SafiCert protège votre excellence digitale grâce à son expertise en Assurance Qualité (QA). Du web au mobile en passant par le cloud, nous anticipons les risques, éliminons les erreurs et créons des expériences fluides. Nos services — Développement Web, Applications Mobiles, Solutions Cloud, Consulting IT et Data Analytics — offrent plus que de la technologie : la confiance et la réussite durable.`
+        subtitle: `Un seul bug peut briser la confiance et freiner la croissance. Chez SafiCert, notre expertise en Assurance Qualité (QA) protège votre excellence digitale. Du Web au Mobile en passant par le Cloud, nous anticipons les risques, éliminons les anomalies et garantissons des expériences fiables, fluides et sécurisées. Nos services — Développement Web, Applications Mobiles, Solutions Cloud, Consulting IT et Data Analytics — offrent bien plus que de la technologie : ils assurent la confiance et une réussite durable`
       }
     : {
         title: "Welcome to Saficert",
-        subtitle: `In the digital world, a single flaw can cost trust and growth. SafiCert protects your digital excellence through its expertise in Quality Assurance (QA). From web to mobile to cloud, we anticipate risks, eliminate errors, and create fluid experiences. Our services — Web Development, Mobile Applications, Cloud Solutions, IT Consulting, and Data Analytics — offer more than technology: confidence and long-term success.`
+        subtitle: `Just one bug can break trust and slow growth. At SafiCert, our expertise in Quality Assurance (QA) safeguards your digital excellence. From Web to Mobile to Cloud, we anticipate risks, eliminate anomalies, and ensure reliable, seamless, and secure experiences. Our services — Web Development, Mobile Applications, Cloud Solutions, IT Consulting, and Data Analytics — deliver more than technology: they build trust and long-term success.`
       }
 
  

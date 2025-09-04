@@ -120,7 +120,7 @@
   }
 
   .dark body {
-    background: linear-gradient(135deg, oklch(0.05 0.02 265) 0%, oklch(0.08 0.02 265) 50%, oklch(0.1 0.03 265) 100%);
+    background: linear-gradient(135deg, oklch(44.849% 0.28022 267.357) 0%, oklch(49.599% 0.2637 264.024) 50%, oklch(45.747% 0.25011 265.268) 100%);
   }
 
   h1, h2, h3, h4, h5, h6 {

@@ -148,7 +148,6 @@ export default function ContactPage() {
                     >
                       <MessageCircle className="h-4 w-4 mr-2" />
                       {language === "fr" ? "Nous écrire" : "Message us"}
-                     
                     </a>
                   </div>
                 </div>
@@ -156,23 +155,31 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Carte de localisation */}
-          <div className="mt-16 bg-card rounded-2xl overflow-hidden shadow-sm border">
+          {/* Carte de localisation encadrée avec marker */}
+          <div className="mt-16 bg-card rounded-2xl overflow-hidden shadow-2xl border-4 border-primary">
             <h2 className="text-2xl font-semibold mb-6 p-8 pb-0 text-foreground">
               {language === "fr" ? "Notre localisation" : "Our Location"}
             </h2>
-            <div className="h-96 w-full">
+
+            <div className="h-96 w-full relative overflow-hidden rounded-2xl">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.949238678649!2d9.762221074820652!3d4.040220396082865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10610d9e0c6d7e5f%3A0x6ce4e7936ef4f6bb!2sLogbessou%2C%20Douala%2C%20Cameroun!5e0!3m2!1sfr!2sus!4v1712345678901!5m2!1sfr!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.949238678649!2d9.7736123!3d4.0866695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10610dcb364ced73%3A0xe8ea6c3e5cf127cd!2sSafiCert!5e0!3m2!1sfr!2sus!4v1712345678901!5m2!1sfr!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-b-2xl"
+                className="rounded-2xl"
               ></iframe>
+
+              {/* Marker animé */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full flex flex-col items-center">
+                <div className="w-6 h-6 bg-red-600 rounded-full border-2 border-white shadow-lg animate-bounce"></div>
+                <p className="mt-2 text-sm font-medium text-red-700">SafiCert</p>
+              </div>
             </div>
+
             <div className="p-8 pt-6">
               <p className="text-center text-muted-foreground">
                 {language === "fr" 

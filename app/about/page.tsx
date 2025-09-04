@@ -63,7 +63,7 @@ export default function AboutPage() {
   const team = [
     { title: t.qaEngineers, description: t.qaEngineersDesc, image: "/qa-engineers-team.png" },
     { title: t.developers, description: t.developersDesc, image: "/expert-software-developers.png" },
-    { title: t.designers, description: t.designersDesc, image: "/placeholder-1qj4x.png" },
+    { title: t.designers, description: t.designersDesc, image: "../images/design.png" },
   ]
 
   return (
@@ -108,7 +108,7 @@ export default function AboutPage() {
             
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://sdmntprwestus2.oaiusercontent.com/files/00000000-d600-61f8-87b8-18ff95cb2a8d/raw?se=2025-08-25T22%3A51%3A18Z&sp=r&sv=2024-08-04&sr=b&scid=d775e592-391d-5469-99b6-f25594960334&skoid=04233560-0ad7-493e-8bf0-1347c317d021&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-25T20%3A23%3A45Z&ske=2025-08-26T20%3A23%3A45Z&sks=b&skv=2024-08-04&sig=3UvdlKuz97Cr0/v2AYcBziMPK29AVITkdoxEfPLXMS8%3D" 
+                src="../images/Hollogram.jpg" 
                 alt="SafiCert Team" 
                 className="w-full h-auto object-cover" 
               />
